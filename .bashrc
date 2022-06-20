@@ -128,3 +128,29 @@ set EDITOR='nvim'
 set -o vi
 
 PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
+
+SSH_ENV=$HOME/.ssh/environment 
+
+# start the ssh-agent 
+function start_agent { 
+    echo "Initializing new SSH agent..." 
+    # spawn ssh-agent 
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}" 
+    echo succeeded 
+    chmod 600 "${SSH_ENV}" 
+    . "${SSH_ENV}" > /dev/null 
+    /usr/bin/ssh-add 
+}
+
+if [ -f "${SSH_ENV}" ]; then 
+    . "${SSH_ENV}" > /dev/null 
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > cd ..//dev/null | { 
+        start_agent; 
+    }
+else { 
+    start_agent; 
+}
+fi 
+ 
+ssh-add ~/.ssh/blackline_default
+ssh-add -l 

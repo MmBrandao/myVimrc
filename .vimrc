@@ -3,13 +3,14 @@ set visualbell
 set number
 set relativenumber
 set smartindent
+set ignorecase
 set smartcase
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 set backup
-set ignorecase
 set cmdheight=2
+set tagcase=match
 
 let mapleader = " "
