@@ -124,6 +124,8 @@ alias vi='nvim'
 
 alias fzf='vim $(\fzf)'
 
+alias bat='batcat'
+
 set EDITOR='nvim'
 set -o vi
 
@@ -154,3 +156,5 @@ fi
  
 ssh-add ~/.ssh/blackline_default
 ssh-add -l 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

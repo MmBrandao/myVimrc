@@ -13,4 +13,4 @@ set backup
 set cmdheight=2
 set tagcase=match
 
-let mapleader = " "
+noremap <Leader>n :noh<CR>
