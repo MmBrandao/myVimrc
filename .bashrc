@@ -125,9 +125,14 @@ alias vi='nvim'
 alias fzf='vim $(\fzf)'
 
 alias bat='batcat'
+alias fd='fdfind'
+alias e='explorer.exe .'
 
 set EDITOR='nvim'
 set -o vi
+
+export FZF_DEFAULT_COMMAND='fdfind --type f'
+
 
 PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
 
@@ -158,3 +163,9 @@ ssh-add ~/.ssh/blackline_default
 ssh-add -l 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+PATH="/home/mbrandao/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/mbrandao/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/mbrandao/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/mbrandao/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/mbrandao/perl5"; export PERL_MM_OPT;

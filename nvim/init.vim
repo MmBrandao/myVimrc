@@ -1,44 +1,35 @@
 " REQUIRED SETUP
-
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath    
-source ~/.vimrc
 
 set nocompatible
 
+" let g:polyglot_disabled = ['c/c++', 'cpp-modern']
+
 source $HOME/.config/nvim/vim-plug/plugins.vim
-autocmd vimenter * ++nested colorscheme gruvbox
 
+" autocmd vimenter * ++nested colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'soft'
+colorscheme gruvbox
 
-" FUNCTIONS
-function! PInsert2(item)
-	let @z=a:item
-	norm "zp
-	call feedkeys('a')
-endfunction
-
-function! CompleteInf()
-	let nl=[]
-	let l=complete_info()
-	for k in l['items']
-		call add(nl, k['word']. ' : ' .k['info'] . ' '. k['menu'] )
-	endfor 
-	call fzf#vim#complete(fzf#wrap({ 'source': nl,'reducer': { lines -> split(lines[0], '\zs :')[0] },'sink':function('PInsert2')}))
-endfunction 
-
-
-
+" let g:tokyonight_style = 'storm' " available: night, storm
+" let g:tokyonight_terminal_colors = 1
+" let g:tokyonight_italic_comments = 0
+" let g:tokyonight_enable_italic = 1
+" colorscheme tokyonight
 
 " COMMANDS 
 command Fs Files
+command Gs GFiles
+command Gst GFiles?
 command Ta Tags
 command W :w
 
-
 " MAPPINGS! 
-imap <c-'> <CMD>:call CompleteInf()<CR>
 
 nnoremap <C-n> :NERDTree<CR>
+
+nnoremap <C-p> :Lines<CR>
 
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
@@ -59,7 +50,7 @@ noremap <Leader>O o<Esc>
 nnoremap th  :tabprev<CR>
 nnoremap tl  :tabnext<CR>
 nnoremap tH	 :tabfirst<CR>
-nnoremap TL  :tablast<CR>
+nnoremap tL  :tablast<CR>
 nnoremap tt  :TagbarToggle<CR>
 
 nnoremap <silent> <Leader>ts :TS <C-R><C-W><CR>
@@ -74,13 +65,17 @@ set signcolumn=yes
 lua require("marks").setup{}
 
 let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
-let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:55%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let $FZF_DEFAULT_OPTS="--ansi --info=inline --preview-window='right:55%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = './include/'
 au! BufEnter *.hpp let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '../, ./'
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPLastMode'
-let g:ctrlp_extensions = ['line']
+let g:perl_host_prog = '/usr/bin/perl'
+
+
+" ORIGINAL VIM VIMRC
+source ~/.vimrc

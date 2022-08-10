@@ -7,7 +7,8 @@ set ignorecase
 set smartcase
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
+set softtabstop=0
+set smarttab
 set expandtab
 set backup
 set cmdheight=2
