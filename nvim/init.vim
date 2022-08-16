@@ -8,8 +8,9 @@ set nocompatible
 
 source $HOME/.config/nvim/vim-plug/plugins.vim
 
-" autocmd vimenter * ++nested colorscheme gruvbox
-let g:gruvbox_contrast_dark = 'soft'
+autocmd vimenter * ++nested colorscheme gruvbox
+" options are: 'soft','medium','hard' - default is 'medium'
+let g:gruvbox_contrast_dark = 'medium'
 colorscheme gruvbox
 
 " let g:tokyonight_style = 'storm' " available: night, storm

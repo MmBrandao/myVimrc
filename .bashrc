@@ -127,6 +127,7 @@ alias fzf='vim $(\fzf)'
 alias bat='batcat'
 alias fd='fdfind'
 alias e='explorer.exe .'
+alias iar='powershell.exe Start Products/GenIII_Safety_Products.eww'
 
 set EDITOR='nvim'
 set -o vi

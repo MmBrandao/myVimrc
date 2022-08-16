@@ -14,4 +14,4 @@ set backup
 set cmdheight=2
 set tagcase=match
 
-noremap <Leader>n :noh<CR>
+noremap <Leader>n :noh<CR>:set cmdheight=1<CR>:set cmdheight=2<CR>

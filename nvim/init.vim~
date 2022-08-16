@@ -59,3 +59,4 @@ lua require("marks").setup{}
 
 let g:UltiSnipsExpandTrigger="<tab>"
 
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:55%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
